@@ -1,0 +1,65 @@
+<!-- this div defines the form to gather data for the db query -->
+<div layout="row" layout-align="center start">
+    <form name="vehicleForm" id="vehicleForm">
+        <md-input-container>
+            <label>Make</label>
+            <input name="make" ng-model="makeData" required>
+            <div ng-messages="vehicleForm.make.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Model</label>
+            <input name="model" ng-model="modelData" required>
+            <div ng-messages="vehicleForm.model.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Year</label>
+            <input name="year" ng-model="yearData" required>
+            <div ng-messages="vehicleForm.year.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+    </form>
+</div>
+
+<div layout="row" layout-align="center start">
+    <form name="oracleCredentialsForm">
+        <md-input-container>
+            <label>Oracle Username</label>
+            <input name="oracleUsername" ng-model="dbuser" required>
+            <div ng-messages="oracleCredentialsForm.oracleUsername.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container>
+            <label>Oracle Password</label>
+            <input name="oraclePassword" ng-model="dbpass" required>
+            <div ng-messages="oracleCredentialsForm.oraclePassword.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+    </form>
+
+    <md-button ng-disabled="isDisabled" ng-click="studentVehicleOnClick()" class="md-primary md-raised">
+        Run
+        <md-tooltip>Note: You can only execute once per query selection.</md-tooltip>
+    </md-button>
+    <md-button href="#!/home" class="md-warn md-raised">
+        Clear
+        <md-tooltip>Clear any forms on the screen.</md-tooltip>
+    </md-button>
+</div>
+
+<div class="gridListdemoBasicUsage">
+    <div class='md-padding' layout="row" layout-wrap layout-align="center start">
+        <md-card md-theme="dark-orange" style="width: 300px;" ng-repeat="name in studentArray">
+            <md-card-content>
+                <h2>{{name}}</h2>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>

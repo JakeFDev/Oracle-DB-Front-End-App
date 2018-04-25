@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+
+    <!--Our own css for this project -->
+    <link rel="stylesheet" href="stylesheets/styles.css">
+
+</head>
+<body ng-app="myApp" ng-cloak>
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3 class="md-flex">Brown's Driving School DB</h3>
+        </div>
+    </md-toolbar>
+
+    <br>
+
+    <md-list>
+        <md-subheader class="md-no-sticky">Select a query</md-subheader>
+        <md-list-item>
+            <!-- note routes in AngularJS 1.6 use #! instead of # -->
+            <md-button href="#!/studentVehicle" class="md-primary">
+                Find students that have taken lessons in a given car
+            </md-button>
+        </md-list-item>
+
+        <md-list-item>
+            <md-button href="#!/instructorLesson" class="md-primary">
+                Instructor who has taught the most lessons
+            </md-button>
+        </md-list-item>
+    </md-list>
+
+    <!-- injected html goes here -->
+    <div ng-view>
+
+    </div>
+
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+
+    <!-- other Angular modules -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+    <!-- Our own js for this project -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+
+    <!-- Your application bootstrap  -->
+    <script type="text/javascript" src="javascripts/index.js"></script>
+
+</body>
+</html>
+
+<!--
+Copyright 2016-2018 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be found in the LICENSE file at https://material.angularjs.org/latest/license.
+-->

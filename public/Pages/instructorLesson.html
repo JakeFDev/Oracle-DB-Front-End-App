@@ -1,0 +1,41 @@
+<div layout="row" layout-align="center start">
+    <form name="oracleCredentialsForm">
+        <md-input-container>
+            <label>Oracle Username</label>
+            <input name="oracleUsername" ng-model="dbuser" required>
+            <div ng-messages="oracleCredentialsForm.oracleUsername.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container>
+            <label>Oracle Password</label>
+            <input name="oraclePassword" ng-model="dbpass" required>
+            <div ng-messages="oracleCredentialsForm.oraclePassword.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+    </form>
+
+    <md-button ng-disabled="isDisabled" ng-click="instructorLessonOnClick()" class="md-primary md-raised">
+        Run
+        <md-tooltip>Note: You can only execute once per query selection.</md-tooltip>
+    </md-button>
+    <md-button href="#!/home" class="md-warn md-raised">
+        Clear
+        <md-tooltip>Clear any forms on the screen.</md-tooltip>
+    </md-button>
+</div>
+
+<div ng-show="errorInput" layout="row" layout-align="center start">
+    <label>All input fields are required.</label>
+</div>
+
+<div ng-show="showCard" layout="row" layout-align="center start">
+    <md-card md-theme="cardTheme">
+        <md-card-content>
+            <h2 ng-bind="instructorName">John Doe</h2>
+            <p>Instructor who has taught the most lessons</p>
+        </md-card-content>
+    </md-card>
+</div>
