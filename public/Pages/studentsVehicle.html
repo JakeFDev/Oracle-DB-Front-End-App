@@ -56,10 +56,18 @@
 
 <div class="gridListdemoBasicUsage">
     <div class='md-padding' layout="row" layout-wrap layout-align="center start">
-        <md-card md-theme="dark-orange" style="width: 300px;" ng-repeat="name in studentArray">
-            <md-card-content>
-                <h2>{{name}}</h2>
-            </md-card-content>
-        </md-card>
+        <div ng-repeat="studentArray in resultArray">
+            <md-card md-theme="dark-orange" style="width: 300px;" ng-repeat="name in studentArray">
+                <md-card-content>
+                    <h2>{{name}}</h2>
+                </md-card-content>
+            </md-card>
+        </div>
     </div>
 </div>
+<!--
+<ul ng-repeat="item in items">
+    <li ng-repeat="(key, val) in item">
+        {{key}}: {{val}}
+    </li>
+</ul> -->

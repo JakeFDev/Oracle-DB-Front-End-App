@@ -108,7 +108,7 @@ app.controller('studentVehicleCtrl', function($scope, $http) {
                 return;
             }
             console.log(successCallback.data);
-            $scope.studentArray = successCallback.data;
+            $scope.resultArray = successCallback.data;
         });
     }
 
