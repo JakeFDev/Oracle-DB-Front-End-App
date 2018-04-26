@@ -97,16 +97,24 @@ app.controller('studentVehicleCtrl', function($scope, $http) {
 
         var _username = $scope.dbuser;
         var _pass = $scope.dbpass;
+        var _make = $scope.makeData;
+        var _model = $scope.modelData;
+        var year = $scope.yearData;
 
         $http.get('http://localhost:3000/studentVehicleLessonHistory', {
             params:{
                 user: _username,
-                pass: _pass
+                pass: _pass,
+                make: _make,
+                model: _model,
+                year: year
             }}).then(function (successCallback, err) {
             if (err) {
                 console.error(err.message);
                 return;
             }
+            //log the data and set the result array to our result.
+            //resultArray is an ng-repeat so it will create a new card for each name returned
             console.log(successCallback.data);
             $scope.resultArray = successCallback.data;
         });

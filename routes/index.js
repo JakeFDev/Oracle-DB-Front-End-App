@@ -16,7 +16,7 @@ router.get('/instructorMostLessons', function (req, res) {
 });
 
 router.get('/studentVehicleLessonHistory', function (req, res) {
-    getStudentVehicleLessonHistory(req.query.user, req.query.pass, function(result) {
+    getStudentVehicleLessonHistory(req.query.user, req.query.pass, req.query.make, req.query.model, req.query.year, function(result) {
         res.send(result);
     })
 });
@@ -41,10 +41,16 @@ function getInstructorMostLessons(username, password, callback) {
                 return;
             }
             console.log("Connection was successful!");
-
+            var query = "select name\n" +
+                "from (\n" +
+                "    SELECT name, COUNT(lesson.instrID) AS count\n" +
+                "    FROM employee INNER JOIN lesson\n" +
+                "    ON employee.empID = lesson.instrID\n" +
+                "    GROUP BY name\n" +
+                "    ORDER BY count DESC\n" +
+                ") WHERE ROWNUM = 1";
             connection.execute(
-                'SELECT name FROM EMPLOYEE',
-
+                query,
                 function(err, result) {
                     if (err) {
                         console.error(err.message);
@@ -59,7 +65,7 @@ function getInstructorMostLessons(username, password, callback) {
         });
 };
 
-function getStudentVehicleLessonHistory(username, password, callback) {
+function getStudentVehicleLessonHistory(username, password, make, model, year, callback) {
     oracledb.getConnection(
         {
             user:           username,
@@ -71,10 +77,18 @@ function getStudentVehicleLessonHistory(username, password, callback) {
                 console.error(err.message);
                 return;
             }
-            console.log("Connection was successful");
 
+            console.log("Connection was successful");
+            var query = "SELECT student.name\n" +
+                "FROM student\n" +
+                "JOIN lesson ON (lesson.stuID = student.stuID)\n" +
+                "JOIN employee ON (lesson.instrID = employee.empID)\n" +
+                "JOIN vehicle ON (employee.empID = vehicle.empID)\n" +
+                "JOIN vehicle ON (lesson.VIN = vehicle.VIN)\n" +
+                "WHERE (vehicle.make = \'" + make + "\' AND vehicle.model = \'" + model + "\' AND vehicle.year=" + year + ")";
+                console.log(query);
             connection.execute(
-                'SELECT name FROM EMPLOYEE',
+                query,
 
                 function (err, result) {
                     if (err) {
