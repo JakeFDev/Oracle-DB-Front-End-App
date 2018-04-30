@@ -16,7 +16,3 @@ This Project was created with:
 > The only requirment is that you have node.js installed on your computer. Change directories to the bin folder and execute node on the www file. The default port is 3000. For testing on your local machine, you can visit localhost:3000.
 
 > The database connect url is defined in `routes/index.js`
-
-##  Preview
-
-< soon
